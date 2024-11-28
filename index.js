@@ -1,18 +1,17 @@
 const express = require('express')
+var cors = require('cors')
 const connectTomango=require('./db')
 connectTomango();
 
 const app = express()
+app.use(cors())
 app.use(express.json())//act as middleware-> bichola between two people
 const port = 5000
-
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
 app.use('/api/auth',require('./routes/auth'));
 app.use('/api/notes',require('./routes/notes'));
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`inotebook is  listening on port ${port}`)
 })
 
 
