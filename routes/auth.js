@@ -17,7 +17,7 @@ router.post('/createuser',[
     const result = validationResult(req);
   if (!result.isEmpty()) {
     success=false;
-    res.status(400).json({success, errors: result.array() });
+    return res.status(400).json({success, errors: result.array() });
   }
   try{
     let user=await User.findOne({email:req.body.email});
@@ -49,6 +49,9 @@ router.post('/createuser',[
    }
     
   })
+
+
+  
   router.post('/login',[
     body('password','Password cannot be blank').exists(),
     body('email','Enter a valid email').isEmail(),
