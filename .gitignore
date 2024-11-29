@@ -1,3 +1,5 @@
 node_modules
 
 notebook-aws-kp.pem
+
+.env
